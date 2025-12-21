@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Rukkor Chat Suite">
+    <test name="All Tests">
+        <classes>
+            <class name="com.rukkor.tests.LoginTest"/>
+            <class name="com.rukkor.tests.ChatTest"/>
+            <class name="com.rukkor.tests.MessageActionTest"/>
+        </classes>
+    </test>
+</suite>
