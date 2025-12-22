@@ -1,7 +1,6 @@
 package com.rukkor.tests;
 
 import com.rukkor.pages.LoginPage;
-import com.rukkor.pages.ChatPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
@@ -9,7 +8,7 @@ import org.testng.annotations.*;
 
 import java.time.Duration;
 
-public class LoginTest {
+public class InvalidLoginTest {
 
     WebDriver driver;
 
@@ -21,22 +20,23 @@ public class LoginTest {
     }
 
     @Test
-    public void manualLoginTest() throws InterruptedException {
+    public void invalidLoginTest() {
         LoginPage login = new LoginPage(driver);
-        ChatPage chat = new ChatPage(driver);
 
         login.open();
+        login.enterEmail("wrong.user@yopmail.com");
+        login.enterPassword("WrongPassword@123");
+        login.clickSignIn();
 
-     
-        System.out.println("👉 Please manually enter Email & Password and click Sign In");
-        Thread.sleep(20000); 
-
-       
-        Assert.assertTrue(chat.isChatLoaded(), "Chat page did not load after login");
+        // ✅ Validate error message
+        Assert.assertTrue(
+                login.isErrorDisplayed(),
+                "Error message not displayed for invalid credentials"
+        );
     }
 
     @AfterClass
-    public void close() {
+    public void closeBrowser() {
         driver.quit();
     }
 }

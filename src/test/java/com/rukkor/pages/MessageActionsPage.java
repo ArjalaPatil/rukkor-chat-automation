@@ -7,19 +7,19 @@ public class MessageActionsPage {
 
     WebDriver driver;
 
+    private By lastMessage = By.xpath("(//div[contains(@class,'message')])[last()]");
+    private By reactionBtn = By.xpath("//span[text()='👍']");
+
     public MessageActionsPage(WebDriver driver) {
         this.driver = driver;
     }
 
-    By reactionButton = By.xpath("(//button[contains(@aria-label,'Reaction')])[last()]");
-    By thumbsUp = By.xpath("//span[text()='👍']");
-
     public void addReaction() {
-        driver.findElement(reactionButton).click();
-        driver.findElement(thumbsUp).click();
+        driver.findElement(lastMessage).click();
+        driver.findElement(reactionBtn).click();
     }
 
     public boolean reactionVisible() {
-        return driver.getPageSource().contains("👍");
+        return driver.findElement(reactionBtn).isDisplayed();
     }
 }

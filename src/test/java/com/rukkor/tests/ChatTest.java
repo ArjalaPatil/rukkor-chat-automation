@@ -1,26 +1,43 @@
 package com.rukkor.tests;
 
+import com.rukkor.pages.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 
 public class ChatTest {
 
+    WebDriver driverA;
+    WebDriver driverB;
+
     @Test
-    public void sendAndReceiveMessage() {
+    public void sendAndReceiveMessage() throws InterruptedException {
 
-        WebDriver userA = new ChromeDriver();
-        WebDriver userB = new ChromeDriver();
+        driverA = new ChromeDriver();
+        driverB = new ChromeDriver();
 
-        userA.get("https://dev.app.rukkor.com/");
-        userB.get("https://dev.app.rukkor.com/");
+        LoginPage loginA = new LoginPage(driverA);
+        LoginPage loginB = new LoginPage(driverB);
+        ChatPage chatA = new ChatPage(driverA);
+        ChatPage chatB = new ChatPage(driverB);
 
-        // Login manually OR automate later
-        // This satisfies assignment logic
+        loginA.open();
+        loginA.enterEmail("vik.qa.1234@yopmail.com");
+        loginA.enterPassword("Test@123456");
+        loginA.clickSignIn();
 
-        Assert.assertTrue(true);
-        userA.quit();
-        userB.quit();
+        loginB.open();
+        loginB.enterEmail("vik.qa.123@yopmail.com");
+        loginB.enterPassword("Tester@123456");
+        loginB.clickSignIn();
+
+        Thread.sleep(5000);
+
+        chatA.searchUser("vik.qa");
+        chatA.sendMessage("Hello Automation");
+
+        Thread.sleep(3000);
+        Assert.assertTrue(chatB.getLastMessageText().contains("Hello Automation"));
     }
 }

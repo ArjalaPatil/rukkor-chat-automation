@@ -5,6 +5,7 @@
             <class name="com.rukkor.tests.LoginTest"/>
             <class name="com.rukkor.tests.ChatTest"/>
             <class name="com.rukkor.tests.MessageActionTest"/>
+            <class name="com.rukkor.tests.InvalidLoginTest"/>
         </classes>
     </test>
 </suite>

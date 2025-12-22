@@ -11,9 +11,10 @@ public class ChatPage {
         this.driver = driver;
     }
 
-    By searchBox = By.xpath("//input[contains(@placeholder,'Search')]");
-    By messageBox = By.tagName("textarea");
-    By lastMessage = By.xpath("(//div[contains(@class,'message')])[last()]");
+    private By searchBox = By.xpath("//input[contains(@placeholder,'Search')]");
+    private By messageBox = By.tagName("textarea");
+    private By sendButton = By.xpath("//button//*[name()='svg']");
+    private By lastMessage = By.xpath("(//div[contains(@class,'message')])[last()]");
 
     public boolean isChatLoaded() {
         return driver.findElement(searchBox).isDisplayed();
@@ -23,8 +24,13 @@ public class ChatPage {
         driver.findElement(searchBox).sendKeys(name);
     }
 
-    public void typeMessage(String text) {
+    public void openUserChat(String name) {
+        driver.findElement(By.xpath("//div[contains(text(),'" + name + "')]")).click();
+    }
+
+    public void sendMessage(String text) {
         driver.findElement(messageBox).sendKeys(text);
+        driver.findElement(sendButton).click();
     }
 
     public String getLastMessageText() {
