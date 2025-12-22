@@ -1,0 +1,123 @@
+Folder PATH listing for volume Windows-SSD
+Volume serial number is 2079-2C81
+C:.
+|   .classpath
+|   .project
+|   pom.xml
+|   project_structure.txt
+|   README.md
+|   
++---.settings
+|       org.eclipse.jdt.core.prefs
+|       org.eclipse.m2e.core.prefs
+|       
++---src
+|   +---main
+|   |   +---java
+|   |   |   \---com
+|   |   |       \---rukkor
+|   |   |           \---ChatAutomation
+|   |   |                   App.java
+|   |   |                   
+|   |   \---resources
+|   \---test
+|       +---java
+|       |   \---com
+|       |       \---rukkor
+|       |           +---base
+|       |           |       BaseTest.java
+|       |           |       
+|       |           +---ChatAutomation
+|       |           +---pages
+|       |           |       ChatPage.java
+|       |           |       LoginPage.java
+|       |           |       MessageActionsPage.java
+|       |           |       
+|       |           +---tests
+|       |           |       ChatTest.java
+|       |           |       InvalidLoginTest.java
+|       |           |       LoginTest.java
+|       |           |       ManualLoginTest.java
+|       |           |       MessageActionTest.java
+|       |           |       testng.xml
+|       |           |       
+|       |           \---utils
+|       \---resources
++---target
+|   +---classes
+|   |   +---com
+|   |   |   \---rukkor
+|   |   |       \---ChatAutomation
+|   |   |               App.class
+|   |   |               
+|   |   \---META-INF
+|   |       |   MANIFEST.MF
+|   |       |   
+|   |       \---maven
+|   |           \---com.rukkor
+|   |               \---ChatAutomation
+|   |                       pom.properties
+|   |                       pom.xml
+|   |                       
+|   \---test-classes
+|       \---com
+|           \---rukkor
+|               +---base
+|               |       BaseTest.class
+|               |       
+|               +---ChatAutomation
+|               +---pages
+|               |       ChatPage.class
+|               |       LoginPage.class
+|               |       MessageActionsPage.class
+|               |       
+|               +---tests
+|               |       ChatTest.class
+|               |       InvalidLoginTest.class
+|               |       LoginTest.class
+|               |       ManualLoginTest.class
+|               |       MessageActionTest.class
+|               |       testng.xml
+|               |       
+|               \---utils
+\---test-output
+    |   bullet_point.png
+    |   collapseall.gif
+    |   emailable-report.html
+    |   failed.png
+    |   index.html
+    |   jquery-3.6.0.min.js
+    |   navigator-bullet.png
+    |   passed.png
+    |   skipped.png
+    |   testng-failed.xml
+    |   testng-reports.css
+    |   testng-reports.js
+    |   testng-reports1.css
+    |   testng-reports2.js
+    |   testng-results.xml
+    |   
+    +---Default suite
+    |       Default test.html
+    |       Default test.xml
+    |       testng-failed.xml
+    |       
+    +---junitreports
+    |       TEST-com.rukkor.tests.ChatTest.xml
+    |       TEST-com.rukkor.tests.InvalidLoginTest.xml
+    |       TEST-com.rukkor.tests.LoginTest.xml
+    |       TEST-com.rukkor.tests.ManualLoginTest.xml
+    |       TEST-com.rukkor.tests.MessageActionTest.xml
+    |       
+    +---Rukkor Chat Suite
+    |       All Tests.html
+    |       All Tests.xml
+    |       Chat Tests.html
+    |       Chat Tests.xml
+    |       testng-failed.xml
+    |       
+    \---Rukkor Suite
+            All Tests.html
+            All Tests.xml
+            testng-failed.xml
+            

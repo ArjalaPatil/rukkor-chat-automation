@@ -1,42 +1,27 @@
 package com.rukkor.tests;
 
+
+import com.rukkor.base.BaseTest;
 import com.rukkor.pages.LoginPage;
-import com.rukkor.pages.ChatPage;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
 
-import java.time.Duration;
 
-public class LoginTest {
+public class LoginTest extends BaseTest {
 
-    WebDriver driver;
+	@Test
+	public void validLoginTest() {
+	    LoginPage loginPage = new LoginPage(driver);
+	    loginPage.login("vik.qa.123@yopmail.com", "Tester@123456");
 
-    @BeforeClass
-    public void launchBrowser() {
-        driver = new ChromeDriver();
-        driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-    }
+	    // Test passes if verification page appears
+	    Assert.assertTrue(loginPage.isVerificationPageDisplayed(), "Verification page did not appear!");
+	}
 
     @Test
-    public void manualLoginTest() throws InterruptedException {
-        LoginPage login = new LoginPage(driver);
-        ChatPage chat = new ChatPage(driver);
-
-        login.open();
-
-     
-        System.out.println("👉 Please manually enter Email & Password and click Sign In");
-        Thread.sleep(20000); 
-
-       
-        Assert.assertTrue(chat.isChatLoaded(), "Chat page did not load after login");
-    }
-
-    @AfterClass
-    public void close() {
-        driver.quit();
+    public void invalidLoginTest() {
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("wrong@email.com", "wrongpass");
+        Assert.assertTrue(loginPage.isLoginFailed(), "Error message was not displayed!");
     }
 }

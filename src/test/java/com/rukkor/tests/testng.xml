@@ -1,0 +1,9 @@
+<suite name="Rukkor Chat Suite">
+    <test name="Login and Message Tests">
+        <classes>
+            <class name="com.rukkor.tests.LoginTest"/>
+            <class name="com.rukkor.tests.MessageActionTest"/>
+            <class name="com.rukkor.tests.ChatTest"/>
+        </classes>
+    </test>
+</suite>

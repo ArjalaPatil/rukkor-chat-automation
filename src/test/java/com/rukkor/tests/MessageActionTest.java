@@ -1,30 +1,35 @@
 package com.rukkor.tests;
 
-import com.rukkor.pages.*;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import com.rukkor.base.BaseTest;
+import com.rukkor.pages.MessageActionsPage;
+import com.rukkor.pages.LoginPage;
+import org.testng.annotations.Test;
 import org.testng.Assert;
-import org.testng.annotations.*;
 
-public class MessageActionTest {
-
-    WebDriver driver;
+public class MessageActionTest extends BaseTest {
 
     @Test
-    public void addReactionTest() throws InterruptedException {
+    public void messageActionsTest() throws InterruptedException {
+        // ---------- Login first ----------
+        LoginPage loginPage = new LoginPage(driver);
+        loginPage.login("vik.qa.123@yopmail.com", "Tester@123456");
 
-        driver = new ChromeDriver();
-        LoginPage login = new LoginPage(driver);
-        MessageActionsPage actions = new MessageActionsPage(driver);
+        // Wait manually for verification code entry
+        Thread.sleep(15000); // <-- Increase if you need more time to enter code manually
 
-        login.open();
-        login.enterEmail("vik.qa.123@yopmail.com");
-        login.enterPassword("Tester@123456");
-        login.clickSignIn();
+        // ---------- Message Actions ----------
+        MessageActionsPage messagePage = new MessageActionsPage(driver);
 
-        Thread.sleep(5000);
-        actions.addReaction();
+        // 1️⃣ Edit message
+        messagePage.editMessage("Hello Edited Message");
+        Assert.assertTrue(messagePage.isMessageEdited("Hello Edited Message"), "Message edit failed!");
 
-        Assert.assertTrue(actions.reactionVisible());
+        // 2️⃣ Delete message
+        messagePage.deleteMessage();
+        Assert.assertTrue(messagePage.isMessageDeleted(), "Message delete failed!");
+
+        // 3️⃣ Add reaction
+        messagePage.addReaction("👍");
+        Assert.assertTrue(messagePage.isReactionAdded(), "Reaction not added!");
     }
 }

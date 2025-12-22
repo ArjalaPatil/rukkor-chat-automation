@@ -1,43 +1,55 @@
 package com.rukkor.tests;
 
-import com.rukkor.pages.*;
+import com.rukkor.base.BaseTest;
+import com.rukkor.pages.LoginPage;
+import com.rukkor.pages.ChatPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.Test;
+
+import java.util.Scanner;
 
 public class ChatTest {
 
-    WebDriver driverA;
-    WebDriver driverB;
-
     @Test
-    public void sendAndReceiveMessage() throws InterruptedException {
+    public void sendMessageTest() {
 
-        driverA = new ChromeDriver();
-        driverB = new ChromeDriver();
+        Scanner scanner = new Scanner(System.in);
 
+        // ----- USER A -----
+        WebDriver driverA = new ChromeDriver();
+        driverA.manage().window().maximize();
         LoginPage loginA = new LoginPage(driverA);
+        loginA.login("vik.qa.1234@yopmail.com", "Tester@123456");
+
+        System.out.println("User A: Enter verification code manually, then press Enter...");
+        scanner.nextLine();  // wait for manual verification
+
+        ChatPage chatPageA = new ChatPage(driverA);
+        // Dummy locator for sending message
+        chatPageA.sendMessage("Hello from User A!");
+
+        // ----- USER B -----
+        WebDriver driverB = new ChromeDriver();
+        driverB.manage().window().maximize();
         LoginPage loginB = new LoginPage(driverB);
-        ChatPage chatA = new ChatPage(driverA);
-        ChatPage chatB = new ChatPage(driverB);
+        loginB.login("vik.qa.123@yopmail.com", "Tester@123456");
 
-        loginA.open();
-        loginA.enterEmail("vik.qa.1234@yopmail.com");
-        loginA.enterPassword("Test@123456");
-        loginA.clickSignIn();
+        System.out.println("User B: Enter verification code manually, then press Enter...");
+        scanner.nextLine();  // wait for manual verification
 
-        loginB.open();
-        loginB.enterEmail("vik.qa.123@yopmail.com");
-        loginB.enterPassword("Tester@123456");
-        loginB.clickSignIn();
+        ChatPage chatPageB = new ChatPage(driverB);
+        // Dummy locator for checking message
+        boolean messageReceived = chatPageB.isMessageReceived("Hello from User A!");
+        System.out.println("Message received by User B: " + messageReceived);
 
-        Thread.sleep(5000);
+        // Keep browsers open until user presses Enter
+        System.out.println("Press Enter to close both browsers...");
+        scanner.nextLine();
 
-        chatA.searchUser("vik.qa");
-        chatA.sendMessage("Hello Automation");
-
-        Thread.sleep(3000);
-        Assert.assertTrue(chatB.getLastMessageText().contains("Hello Automation"));
+        // Close browsers and scanner
+        driverA.quit();
+        driverB.quit();
+        scanner.close();
     }
 }

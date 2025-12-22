@@ -2,38 +2,49 @@ package com.rukkor.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
 
 public class ChatPage {
 
     WebDriver driver;
+    WebDriverWait wait;
 
     public ChatPage(WebDriver driver) {
         this.driver = driver;
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
     }
 
-    private By searchBox = By.xpath("//input[contains(@placeholder,'Search')]");
-    private By messageBox = By.tagName("textarea");
-    private By sendButton = By.xpath("//button//*[name()='svg']");
-    private By lastMessage = By.xpath("(//div[contains(@class,'message')])[last()]");
+    // Dummy locator for message input (replace later)
+    By messageInput = By.xpath("//input[@placeholder='Type a message']");
 
-    public boolean isChatLoaded() {
-        return driver.findElement(searchBox).isDisplayed();
-    }
+    // Dummy locator for send button (replace later)
+    By sendButton = By.xpath("//button[text()='Send']");
 
-    public void searchUser(String name) {
-        driver.findElement(searchBox).sendKeys(name);
-    }
+    // Dummy locator for received messages (replace later)
+    By receivedMessages = By.xpath("//div[@class='message-text']");
 
-    public void openUserChat(String name) {
-        driver.findElement(By.xpath("//div[contains(text(),'" + name + "')]")).click();
-    }
-
-    public void sendMessage(String text) {
-        driver.findElement(messageBox).sendKeys(text);
+    // Send a message
+    public void sendMessage(String message) {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(messageInput)).sendKeys(message);
         driver.findElement(sendButton).click();
     }
 
-    public String getLastMessageText() {
-        return driver.findElement(lastMessage).getText();
+    // Check if message is received
+    public boolean isMessageReceived(String message) {
+        try {
+            wait.until(ExpectedConditions.visibilityOfElementLocated(receivedMessages));
+            for (WebElement msg : driver.findElements(receivedMessages)) {
+                if (msg.getText().equals(message)) {
+                    return true;
+                }
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return false;
     }
 }

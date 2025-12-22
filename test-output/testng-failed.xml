@@ -5,9 +5,9 @@
     <classes>
       <class name="com.rukkor.tests.LoginTest">
         <methods>
-          <include name="manualLoginTest"/>
-          <include name="close"/>
-          <include name="launchBrowser"/>
+          <include name="tearDown"/>
+          <include name="setup"/>
+          <include name="invalidLoginTest"/>
         </methods>
       </class> <!-- com.rukkor.tests.LoginTest -->
     </classes>

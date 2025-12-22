@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Rukkor Chat Suite]" guice-stage="DEVELOPMENT">
-  <test thread-count="5" name="Chat Tests(failed)">
+<suite name="Failed suite [Rukkor Chat Suite]">
+  <test thread-count="5" name="Login and Message Tests(failed)">
     <classes>
-      <class name="com.rukkor.tests.ChatTest">
+      <class name="com.rukkor.tests.MessageActionTest">
         <methods>
           <include name="tearDown"/>
-          <include name="loginTest"/>
+          <include name="editMessageAfterVerification"/>
           <include name="setup"/>
-          <include name="deleteMessageTest"/>
-          <include name="sendMessageTest"/>
-          <include name="editMessageTest"/>
         </methods>
-      </class> <!-- com.rukkor.tests.ChatTest -->
+      </class> <!-- com.rukkor.tests.MessageActionTest -->
     </classes>
-  </test> <!-- Chat Tests(failed) -->
+  </test> <!-- Login and Message Tests(failed) -->
 </suite> <!-- Failed suite [Rukkor Chat Suite] -->
