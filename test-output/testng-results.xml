@@ -1,27 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="2" passed="1" failed="1" skipped="0">
+<testng-results ignored="0" total="1" passed="0" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-12-22T22:49:22 IST" name="Default suite" finished-at="2025-12-22T22:51:26 IST" duration-ms="124284">
+  <suite started-at="2025-12-23T11:13:52 IST" name="Default suite" finished-at="2025-12-23T11:14:36 IST" duration-ms="43339">
     <groups>
     </groups>
-    <test started-at="2025-12-22T22:49:22 IST" name="Default test" finished-at="2025-12-22T22:51:26 IST" duration-ms="124284">
-      <class name="com.rukkor.tests.LoginTest">
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.rukkor.tests.LoginTest@74f0ea28]" started-at="2025-12-22T22:49:22 IST" name="setup" finished-at="2025-12-22T22:49:44 IST" duration-ms="22149" status="PASS">
+    <test started-at="2025-12-23T11:13:52 IST" name="Default test" finished-at="2025-12-23T11:14:36 IST" duration-ms="43339">
+      <class name="com.rukkor.tests.MessageActionTest">
+        <test-method is-config="true" signature="setup()[pri:0, instance:com.rukkor.tests.MessageActionTest@3e694b3f]" started-at="2025-12-23T11:13:52 IST" name="setup" finished-at="2025-12-23T11:13:58 IST" duration-ms="5519" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method signature="invalidLoginTest()[pri:0, instance:com.rukkor.tests.LoginTest@74f0ea28]" started-at="2025-12-22T22:49:44 IST" name="invalidLoginTest" finished-at="2025-12-22T22:50:57 IST" duration-ms="72436" status="FAIL">
-          <exception class="org.openqa.selenium.TimeoutException">
+        <test-method signature="sendAndDeleteMessage()[pri:0, instance:com.rukkor.tests.MessageActionTest@3e694b3f]" started-at="2025-12-23T11:13:58 IST" name="sendAndDeleteMessage" finished-at="2025-12-23T11:14:35 IST" duration-ms="37520" status="FAIL">
+          <exception class="org.openqa.selenium.ElementClickInterceptedException">
             <message>
-              <![CDATA[Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (f2c613ae532d00ee3b9ab10c8f654eee)] -> id: loginForm_email] (tried for 15 second(s) with 500 milliseconds interval)]]>
+              <![CDATA[element click intercepted: Element <span class="flowTitle">...</span> is not clickable at point (140, 82). Other element would receive the click: <div class="SpaceDrawerTitle" style="height: 316px;">...</div>
+  (Session info: chrome=133.0.6943.127)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.9'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [fd477e087ef520c68a5e1be1898ff436, clickElement {id=f.160F0F8E14D611AF5813E60792EF6C19.d.701B58EA7E0BCB74AAC417034B02F3BE.e.74}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 133.0.6943.127, chrome: {chromedriverVersion: 133.0.6943.141 (2a5d6da0d61..., userDataDir: C:\Users\arjal\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61524}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61524/devtoo..., se:cdpVersion: 133.0.6943.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (fd477e087ef520c68a5e1be1898ff436)] -> xpath: //span[text()='General']]
+Session ID: fd477e087ef520c68a5e1be1898ff436]]>
             </message>
             <full-stacktrace>
-              <![CDATA[org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of [[ChromeDriver: chrome on windows (f2c613ae532d00ee3b9ab10c8f654eee)] -> id: loginForm_email] (tried for 15 second(s) with 500 milliseconds interval)
-at org.openqa.selenium.support.ui.WebDriverWait.timeoutException(WebDriverWait.java:84)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:228)
-at com.rukkor.pages.LoginPage.login(LoginPage.java:34)
-at com.rukkor.tests.LoginTest.invalidLoginTest(LoginTest.java:29)
+              <![CDATA[org.openqa.selenium.ElementClickInterceptedException: element click intercepted: Element <span class="flowTitle">...</span> is not clickable at point (140, 82). Other element would receive the click: <div class="SpaceDrawerTitle" style="height: 316px;">...</div>
+  (Session info: chrome=133.0.6943.127)
+Build info: version: '4.18.1', revision: 'b1d3319b48'
+System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.9'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Command: [fd477e087ef520c68a5e1be1898ff436, clickElement {id=f.160F0F8E14D611AF5813E60792EF6C19.d.701B58EA7E0BCB74AAC417034B02F3BE.e.74}]
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 133.0.6943.127, chrome: {chromedriverVersion: 133.0.6943.141 (2a5d6da0d61..., userDataDir: C:\Users\arjal\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:61524}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:61524/devtoo..., se:cdpVersion: 133.0.6943.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[ChromeDriver: chrome on windows (fd477e087ef520c68a5e1be1898ff436)] -> xpath: //span[text()='General']]
+Session ID: fd477e087ef520c68a5e1be1898ff436
+at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
+at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
+at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
+at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
+at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
+at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
+at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
+at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
+at org.openqa.selenium.remote.RemoteWebElement.execute(RemoteWebElement.java:223)
+at org.openqa.selenium.remote.RemoteWebElement.click(RemoteWebElement.java:76)
+at com.rukkor.pages.ChatNavigationPage.openGeneralChat(ChatNavigationPage.java:33)
+at com.rukkor.tests.MessageActionTest.sendAndDeleteMessage(MessageActionTest.java:38)
 at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
 at java.base/java.lang.reflect.Method.invoke(Method.java:580)
 at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
@@ -48,60 +74,17 @@ at org.testng.TestNG.run(TestNG.java:1082)
 at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
 at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
-Caused by: org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {"method":"css selector","selector":"#loginForm_email"}
-  (Session info: chrome=133.0.6943.127)
-For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
-Build info: version: '4.18.1', revision: 'b1d3319b48'
-System info: os.name: 'Windows 11', os.arch: 'amd64', os.version: '10.0', java.version: '21.0.9'
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Command: [f2c613ae532d00ee3b9ab10c8f654eee, findElement {using=id, value=loginForm_email}]
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 133.0.6943.127, chrome: {chromedriverVersion: 133.0.6943.141 (2a5d6da0d61..., userDataDir: C:\Users\arjal\AppData\Loca...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:55473}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: windows, proxy: Proxy(), se:cdp: ws://localhost:55473/devtoo..., se:cdpVersion: 133.0.6943.127, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: f2c613ae532d00ee3b9ab10c8f654eee
-at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62)
-at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502)
-at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486)
-at org.openqa.selenium.remote.ErrorCodec.decode(ErrorCodec.java:167)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:138)
-at org.openqa.selenium.remote.codec.w3c.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:50)
-at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:190)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.invokeExecute(DriverCommandExecutor.java:216)
-at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:174)
-at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:519)
-at org.openqa.selenium.remote.ElementLocation$ElementFinder$2.findElement(ElementLocation.java:165)
-at org.openqa.selenium.remote.ElementLocation.findElement(ElementLocation.java:59)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:356)
-at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:350)
-at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:68)
-at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-at jdk.proxy2/jdk.proxy2.$Proxy12.isDisplayed(Unknown Source)
-at org.openqa.selenium.support.ui.ExpectedConditions.elementIfVisible(ExpectedConditions.java:304)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:290)
-at org.openqa.selenium.support.ui.ExpectedConditions$10.apply(ExpectedConditions.java:287)
-at org.openqa.selenium.support.ui.FluentWait.until(FluentWait.java:203)
-... 28 more
 ]]>
             </full-stacktrace>
-          </exception> <!-- org.openqa.selenium.TimeoutException -->
+          </exception> <!-- org.openqa.selenium.ElementClickInterceptedException -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- invalidLoginTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.rukkor.tests.LoginTest@74f0ea28]" started-at="2025-12-22T22:50:57 IST" name="tearDown" finished-at="2025-12-22T22:50:57 IST" duration-ms="0" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-        <test-method is-config="true" signature="setup()[pri:0, instance:com.rukkor.tests.LoginTest@74f0ea28]" started-at="2025-12-22T22:50:57 IST" name="setup" finished-at="2025-12-22T22:51:18 IST" duration-ms="21434" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setup -->
-        <test-method signature="validLoginTest()[pri:0, instance:com.rukkor.tests.LoginTest@74f0ea28]" started-at="2025-12-22T22:51:18 IST" name="validLoginTest" finished-at="2025-12-22T22:51:26 IST" duration-ms="8192" status="PASS">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- validLoginTest -->
-        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.rukkor.tests.LoginTest@74f0ea28]" started-at="2025-12-22T22:51:26 IST" name="tearDown" finished-at="2025-12-22T22:51:26 IST" duration-ms="0" status="PASS">
+        </test-method> <!-- sendAndDeleteMessage -->
+        <test-method is-config="true" signature="tearDown()[pri:0, instance:com.rukkor.tests.MessageActionTest@3e694b3f]" started-at="2025-12-23T11:14:35 IST" name="tearDown" finished-at="2025-12-23T11:14:36 IST" duration-ms="251" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- tearDown -->
-      </class> <!-- com.rukkor.tests.LoginTest -->
+      </class> <!-- com.rukkor.tests.MessageActionTest -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

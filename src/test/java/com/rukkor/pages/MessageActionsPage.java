@@ -1,87 +1,47 @@
 package com.rukkor.pages;
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.*;
 import java.time.Duration;
 
 public class MessageActionsPage {
 
     WebDriver driver;
     WebDriverWait wait;
+    Actions actions;
 
     public MessageActionsPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, Duration.ofSeconds(15));
-        PageFactory.initElements(driver, this);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        this.actions = new Actions(driver);
     }
 
-    // ---------- Replace the below locators with actual ones ----------
-    @FindBy(xpath = "DUMMY_EDIT_MESSAGE_LOCATOR")  // Replace this
-    WebElement editMessageField;
+    By messageBox = By.xpath("//p[@data-placeholder='Type a message...']");
 
-    @FindBy(xpath = "DUMMY_SAVE_EDIT_BUTTON_LOCATOR") // Replace this
-    WebElement saveEditButton;
+    // last message container
+    By lastMessage = By.xpath("(//div[contains(@class,'messageItem')])[last()]");
 
-    @FindBy(xpath = "DUMMY_CANCEL_EDIT_BUTTON_LOCATOR") // Replace this
-    WebElement cancelEditButton;
+    // menu INSIDE message
+    By threeDots = By.xpath(".//i[contains(@class,'fa-ellipsis')]");
 
-    @FindBy(xpath = "DUMMY_DELETE_BUTTON_LOCATOR") // Replace this
-    WebElement deleteMessageButton;
+    By deleteBtn = By.xpath("//span[text()='Delete']");
+    By confirmDelete = By.xpath("//button//span[text()='Delete']");
 
-    @FindBy(xpath = "DUMMY_CONFIRM_DELETE_BUTTON_LOCATOR") // Replace this
-    WebElement confirmDeleteButton;
-
-    @FindBy(xpath = "DUMMY_ADD_REACTION_BUTTON_LOCATOR") // Replace this
-    WebElement addReactionButton;
-
-    @FindBy(xpath = "DUMMY_REACTION_EMOJI_LOCATOR") // Replace this
-    WebElement reactionEmoji;
-
-    // ------------------- Actions -------------------
-    
-    public void editMessage(String newText) {
-        wait.until(ExpectedConditions.visibilityOf(editMessageField));
-        editMessageField.clear();
-        editMessageField.sendKeys(newText);
-        saveEditButton.click();
+    public void sendMessage(String text) {
+        WebElement box = wait.until(ExpectedConditions.elementToBeClickable(messageBox));
+        box.sendKeys(text + Keys.ENTER);
     }
 
-    public boolean isMessageEdited(String expectedText) {
-        // Replace with actual verification
-        WebElement editedMessage = driver.findElement(By.xpath("DUMMY_EDITED_MESSAGE_TEXT_LOCATOR"));
-        return editedMessage.getText().equals(expectedText);
-    }
+    public void deleteLastMessage() {
+        WebElement msg = wait.until(ExpectedConditions.visibilityOfElementLocated(lastMessage));
 
-    public void deleteMessage() {
-        deleteMessageButton.click();
-        confirmDeleteButton.click();
-    }
+        actions.moveToElement(msg).perform();
 
-    public boolean isMessageDeleted() {
-        // Replace with actual verification
-        try {
-            WebElement deletedMessage = driver.findElement(By.xpath("DUMMY_DELETED_MESSAGE_LOCATOR"));
-            return !deletedMessage.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return true;
-        }
-    }
+        WebElement menu = msg.findElement(threeDots);
+        menu.click();
 
-    public void addReaction(String emoji) {
-        addReactionButton.click();
-        // Replace if needed
-        reactionEmoji.click();
-    }
-
-    public boolean isReactionAdded() {
-        // Replace with actual verification
-        try {
-            WebElement addedReaction = driver.findElement(By.xpath("DUMMY_REACTION_VISIBLE_LOCATOR"));
-            return addedReaction.isDisplayed();
-        } catch (NoSuchElementException e) {
-            return false;
-        }
+        wait.until(ExpectedConditions.elementToBeClickable(deleteBtn)).click();
+        wait.until(ExpectedConditions.elementToBeClickable(confirmDelete)).click();
     }
 }

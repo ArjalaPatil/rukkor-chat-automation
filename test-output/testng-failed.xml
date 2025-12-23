@@ -3,13 +3,13 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="com.rukkor.tests.LoginTest">
+      <class name="com.rukkor.tests.MessageActionTest">
         <methods>
           <include name="tearDown"/>
           <include name="setup"/>
-          <include name="invalidLoginTest"/>
+          <include name="sendAndDeleteMessage"/>
         </methods>
-      </class> <!-- com.rukkor.tests.LoginTest -->
+      </class> <!-- com.rukkor.tests.MessageActionTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

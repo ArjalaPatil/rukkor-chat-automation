@@ -23,7 +23,7 @@ public class ChatTest {
         loginA.login("vik.qa.1234@yopmail.com", "Tester@123456");
 
         System.out.println("User A: Enter verification code manually, then press Enter...");
-        scanner.nextLine();  // wait for manual verification
+        scanner.nextLine();  
 
         ChatPage chatPageA = new ChatPage(driverA);
         // Dummy locator for sending message

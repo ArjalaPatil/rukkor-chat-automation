@@ -29,14 +29,14 @@ public class LoginPage {
         PageFactory.initElements(driver, this);
     }
 
-    // ✅ Method to perform login
+    //  Method login
     public void login(String userEmail, String userPassword) {
         wait.until(ExpectedConditions.visibilityOf(email)).sendKeys(userEmail);
         password.sendKeys(userPassword);
         loginBtn.click();
     }
 
-    // ✅ Method to check if login is successful
+    //Method to check login 
     public boolean isLoginSuccess() {
         try {
             wait.until(ExpectedConditions.urlContains("chat"));
@@ -46,7 +46,7 @@ public class LoginPage {
         }
     }
 
-    // Optional: check if login failed
+    // check if login failed
     public boolean isLoginFailed() {
         try {
             wait.until(ExpectedConditions.visibilityOf(errorMsg));
